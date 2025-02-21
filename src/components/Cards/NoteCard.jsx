@@ -19,6 +19,7 @@ const NoteCard = ({
         <h6 className="notes-title">{title}</h6>
         <MdOutlinePushPin
           className={`pin-icon ${isPinned ? "pinned" : ""}`}
+          color={isPinned ? "blue" : "gray"}
           onClick={onPinNote}
         />
       </div>
