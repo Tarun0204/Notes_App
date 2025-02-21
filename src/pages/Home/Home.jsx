@@ -15,7 +15,11 @@ import { toast } from "react-toastify";
 Modal.setAppElement("#root");
 
 const Home = () => {
-  const [openModal, setOpenModal] = useState({ isShown: false, type: "add", data: null });
+  const [openModal, setOpenModal] = useState({
+    isShown: false,
+    type: "add",
+    data: null,
+  });
   const [allNotes, setAllNotes] = useState([]);
   const [userInfo, setUserInfo] = useState(null);
   const [searchQuery, setSearchQuery] = useState("");
@@ -52,7 +56,7 @@ const Home = () => {
       }
     }
   };
-  
+
   const getAllNotes = async () => {
     try {
       const response = await axiosapp.get("/all-notes");
@@ -98,6 +102,30 @@ const Home = () => {
     }
   };
 
+  const noteIsPinned = async (noteData) => {
+    const noteId = noteData?._id;
+    const updatedPinnedStatus = !noteData.isPinned;
+    try {
+      const response = await axiosapp.put(`/pin-note/${noteId}`, {
+        isPinned: updatedPinnedStatus,
+      });
+      console.log("API Response:", response.data);
+      if (response.data && response.data.note) {
+        setAllNotes((prevNotes) =>
+          prevNotes.map((note) =>
+            note._id === noteId
+              ? { ...note, isPinned: updatedPinnedStatus }
+              : note
+          )
+        );
+        toast.success(updatedPinnedStatus ? "Note Pinned!" : "Note Unpinned!");
+      }
+    } catch (error) {
+      console.error("Error updating pin status:", error);
+      toast.error("Failed to update note. Please try again.");
+    }
+  };
+
   const handleSearch = () => {
     if (searchQuery) {
       onSearchNote(searchQuery);
@@ -118,7 +146,7 @@ const Home = () => {
   return (
     <>
       <Navbar userInfo={userInfo} isMobileView={isMobileView} />
-      
+
       {isMobileView && (
         <div className="search-bar-home-container">
           <Search
@@ -149,7 +177,9 @@ const Home = () => {
           <div className="empty-view">
             <img src={NoResults} alt="No Results" className="empty-img" />
             <h2 className="empty-heading">No Results Found</h2>
-            <p className="empty-para">Try searching with a different keyword.</p>
+            <p className="empty-para">
+              Try searching with a different keyword.
+            </p>
           </div>
         ) : (
           <div className="empty-view">
@@ -170,14 +200,20 @@ const Home = () => {
 
       <Modal
         isOpen={openModal.isShown}
-        onRequestClose={() => setOpenModal({ isShown: false, type: "add", data: null })}
-        style={{ overlay: { marginTop: "50px", backgroundColor: "rgba(0, 0, 0, 0.2)" } }}
+        onRequestClose={() =>
+          setOpenModal({ isShown: false, type: "add", data: null })
+        }
+        style={{
+          overlay: { marginTop: "50px", backgroundColor: "rgba(0, 0, 0, 0.2)" },
+        }}
         className="modal-container"
       >
         <EditNotes
           type={openModal.type}
           noteData={openModal.data}
-          onClose={() => setOpenModal({ isShown: false, type: "add", data: null })}
+          onClose={() =>
+            setOpenModal({ isShown: false, type: "add", data: null })
+          }
           getAllNotes={getAllNotes}
         />
       </Modal>
