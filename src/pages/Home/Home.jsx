@@ -122,7 +122,6 @@ const Home = () => {
       }
     } catch (error) {
       console.error("Error updating pin status:", error);
-      toast.error("Failed to update note. Please try again.");
     }
   };
 
