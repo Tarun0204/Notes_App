@@ -1,0 +1,103 @@
+.profile-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding: 15px 20px;
+  border-radius: 10px;
+  max-width: 500px;
+  margin-left: auto;
+}
+
+.user-container {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.profile-logo {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f1f5f9;
+  color: #333;
+  font-size: 18px;
+  font-weight: bold;
+  border-radius: 50%;
+  text-transform: uppercase;
+}
+
+.profile-name {
+  font-size: 18px;
+  color: #555;
+}
+
+.logout-btn {
+  padding: 8px 16px;
+  background-color: red;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.logout-btn:hover {
+  background-color: #b0173b;
+}
+
+@media (max-width: 768px) {
+  .profile-container {
+    padding: 10px;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  .user-container {
+    flex-direction: row;
+    gap: 8px;
+  }
+
+  .profile-logo {
+    width: 35px;
+    height: 35px;
+    font-size: 16px;
+  }
+
+  .profile-name {
+    font-size: 16px;
+  }
+
+  .logout-btn {
+    padding: 6px 12px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .profile-container {
+    padding: 8px;
+    align-items: flex-end;
+  }
+
+  .user-container {
+    flex-direction: row;
+    gap: 6px;
+  }
+
+  .profile-logo {
+    width: 30px;
+    height: 30px;
+    font-size: 14px;
+  }
+
+  .profile-name {
+    font-size: 14px;
+  }
+
+  .logout-btn {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}

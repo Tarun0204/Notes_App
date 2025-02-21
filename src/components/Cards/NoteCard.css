@@ -1,0 +1,158 @@
+.note-card-container {
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  margin-left: 20px;
+  width: 100%;
+  max-width: 500px;
+  margin-bottom: 15px;
+  border: 1px solid #e0e0e0;
+  margin-top: 0 !important;
+}
+
+.note-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.notes-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #333;
+  margin: 0;
+}
+
+.pin-icon {
+  font-size: 24px;
+  color: #999;
+  cursor: pointer;
+}
+
+.pin-icon.pinned {
+  color: #007bff;
+}
+
+.notes-date {
+  font-size: 12px;
+  color: #999;
+  margin-top: 5px;
+}
+
+.note-content {
+  font-size: 14px;
+  color: #555;
+  margin-top: 10px;
+  line-height: 1.5;
+  text-align: justify;
+}
+
+.actions-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 15px;
+  border-top: 1px solid #f0f0f0;
+  padding-top: 10px;
+}
+
+.tags-container {
+  font-size: 12px;
+  color: #007bff;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+}
+
+.actions {
+  display: flex;
+  gap: 12px;
+}
+
+.action-icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+
+.edit-icon:hover {
+  color: green;
+}
+
+.delete-icon:hover {
+  color: red;
+}
+
+@media (max-width: 768px) {
+  .note-card-container {
+    padding: 15px;
+    margin-left: 6px;
+    margin-top: 0 !important;
+    width: 95%;
+  }
+
+  .note-header {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .notes-title {
+    font-size: 16px;
+  }
+
+  .pin-icon {
+    font-size: 20px;
+  }
+
+  .notes-date {
+    font-size: 10px;
+  }
+
+  .note-content {
+    font-size: 13px;
+  }
+
+  .actions-container {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .actions {
+    flex-direction: row;
+    gap: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .note-card-container {
+    padding: 12px;
+  }
+
+  .notes-title {
+    font-size: 14px;
+  }
+
+  .pin-icon {
+    font-size: 18px;
+  }
+
+  .notes-date {
+    font-size: 9px;
+  }
+
+  .note-content {
+    font-size: 12px;
+  }
+
+  .actions-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .actions {
+    flex-direction: row;
+    gap: 10px;
+  }
+}
